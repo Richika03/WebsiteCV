@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+      body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    background-color: #d9b1f3;
+}
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px 20px;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+header .logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+nav {
+    display: flex;
+    gap: 20px;
+}
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px;
+    transition: color 0.3s;
+}
+nav a:hover {
+    color: #ffcc00;
+}
+
+/* Responsive Menu */
+@media (max-width: 768px) {
+    nav {
+        display: none;
+    }
+    .menu-toggle {
+        display: block;
+        cursor: pointer;
+    }
+}
+
+.hero {
+    height: 100vh;
+    background: url('https://example.com/background-image.jpg') center/cover no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    background-color: #180a1e; /* Fallback si pas d'image */
+}
+.hero h1 {
+    font-size: 50px;
+    margin: 0;
+}
+.hero p {
+    font-size: 24px;
+    margin: 10px 0 0;
+}
+.about, .portfolio, .contact {
+    padding: 100px 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+.portfolio {
+    background-color: #d9b1f3;
+}
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+.portfolio-item {
+    background-color: rgb(133, 91, 171);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    transition: transform 0.3s;
+    border-radius: 8px;
+}
+.portfolio-item:hover {
+    transform: scale(1.05);
+}
+.portfolio-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    margin: auto;
+}
+.contact-form input, .contact-form textarea {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: 'Arial', sans-serif;
+}
+.contact-form button {
+    padding: 12px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.contact-form button:hover {
+    background-color: #555;
+}
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+}
+
+/* Ajout de la section "À propos" avec image ronde et animation */
+.about-container {
+    display: flex;
+    align-items: center; /* Aligne verticalement le texte et l'image */
+    justify-content: space-between;
+}
+
+.about-text {
+    width: 50%; /* Prend 50% de l'espace pour le texte */
+    padding-right: 20px; /* Ajoute un espace entre le texte et l'image */
+}
+
+.about-image {
+    width: 40%; /* Prend 40% de l'espace pour l'image */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-image img {
+    width: 200px; /* Ajuste la taille de l'image pour qu'elle soit plus petite */
+    height: 200px; /* Maintient le ratio pour l'image ronde */
+    border-radius: 50%; /* Assure que l'image reste parfaitement ronde */
+    animation: float 4s ease-in-out infinite; /* Ajoute un léger mouvement flottant */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ajoute une ombre douce pour un effet dynamique */
+}
+
+/* Animation pour un léger mouvement de flottement */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Ajustements pour les petits écrans */
+@media (max-width: 768px) {
+    .about-container {
+        flex-direction: column;
+    }
+
+    .about-text, .about-image {
+        width: 100%;
+        text-align: center;
+    }
+
+    .about-text {
+        padding-right: 0;
+    }
+}
+ /* Styles pour la section hero */
+ .hero {
+        position: relative;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        text-align: center;
+        overflow: hidden;
+    }
+
+    /* Style pour la vidéo en fond */
+    #background-video {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* S'assure que la vidéo couvre tout l'écran */
+        transform: translate(-50%, -50%);
+        z-index: -1; /* La vidéo reste derrière le contenu */
+    }
+
+    /* Style pour le contenu dans la section hero */
+    .hero-content {
+        position: relative;
+        z-index: 1;
+    }
+
+    /* Style pour ajuster la taille du texte */
+    .hero h1 {
+        font-size: 50px;
+        margin: 0;
+    }
+    .hero p {
+        font-size: 24px;
+        margin: 10px 0 0;
+    }
+
+    /* Ajout de styles pour petits écrans */
+    @media (max-width: 768px) {
+        .hero h1 {
+            font-size: 36px;
+        }
+        .hero p {
+            font-size: 18px;
+        }
+    }
+</style>
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">Mon Portfolio</div>
+    <nav>
+        <a href="#about">À propos</a>
+        <a href="#portfolio">Projets</a>
+        <a href="#contact">Contact</a>
+    </nav>
+    <div class="menu-toggle">
+        <i class="fas fa-bars"></i>
+    </div>
+</header>
+
+<section class="hero">
+    <video autoplay muted loop id="background-video">
+        <source src="../SIteCVPERSO/bottle 3danimation 2.mp4" type="video/mp4">
+        Votre navigateur ne supporte pas la vidéo HTML5.
+    </video>
+    <div class="hero-content">
+        <h1>Je suis Laurence Barthélémy</h1>
+        <p>Développeur Web | Designer</p>
+    </div>
+</section>
+<section id="about" class="about">
+    <div class="about-container">
+        <div class="about-text">
+            <h2>À propos de moi</h2>
+            <p>Je suis une étudiante de 23 ans passionnée par l'économie, la 3D, la réalité virtuelle et l'informatique axée développement web. Et pssst aussi la créativité dans mes projets !</p>
+        </div>
+        <div class="about-image">
+            <img src="../SIteCVPERSO/Moi (2).jpg" alt="Mon portrait" />
+        </div>
+    </div>
+</section>
+
+<section id="portfolio" class="portfolio">
+    <h2>Mes Projets</h2>
+    <div class="portfolio-grid">
+        <div class="portfolio-item">
+            <img src="../SIteCVPERSO/1x/Fichier 1-100.jpg" alt="Projet 1">
+            <h3>Logo E-Busness</h3>
+            <p>Avec le conseil étudiant de l'école on a organiser un concours de logo parmis toute les sections et j'y ai participer ! C'étais mon 1er logo fais avec Illustrator.</p>
+        </div>
+        <div class="portfolio-item">
+            <img src="../SIteCVPERSO/Capture d'écran 2024-10-24 171105.png" alt="Projet 2">
+            <h3>Reportage</h3>
+            <p>Après avoir fais une première vidéo sur ma chaîne youtube "MinReportage" je voulais refaire mais en publique avec un ami en pleine convention à la SummerGeekFestivale de Tournai.</p>
+        </div>
+        <div class="portfolio-item">
+            <video controls width="100%" height="auto" style="max-height: 400px; border-radius: 5px;">
+                <source src="../SIteCVPERSO/bottle 3danimation.mp4" type="video/mp4">
+                Votre navigateur ne supporte pas la vidéo HTML5.
+            </video>
+            <h3>Projet 3</h3>
+            <p>Description du projet 3.</p>
+        </div>
+        <div class="portfolio-item">
+            <img src="https://example.com/project2.jpg" alt="Projet 4">
+            <h3>Site web entrepreunarial</h3>
+            <p>Ici c'est l'envie de pousser plus loin ma famille qui est dans l'apiculture pour élargir et j'ai plusieurs idées associations d'apiculteur + vendre nôtre miel et le miels des autres aussi plus dans l'entraide sur un même site !</p>
+        </div>
+        <div class="portfolio-item">
+            <img src="https://example.com/project2.jpg" alt="Projet 5">
+            <h3>Site/application musical</h3>
+            <p>L'idée étais vague mais j'ai eu un déclique avec l'émission star académie et j'aimerais crée une application qui met en avant des artistes talentueux qui sont pas connu et un moyen d'écouter sur la même plateforme leurs musiques comme un spotify mais en mieux et accessible à tous ! </p>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="contact">
+    <h2>N'hésitez pas à me contacter !</h2>
+    <form id="contact-form" class="contact-form" onsubmit="openEmailClient(); return false;">
+        <label for="name">Nom</label>
+        <input type="text" id="name" placeholder="Votre nom" required>
+    
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Votre email" required>
+    
+        <label for="message">Message</label>
+        <textarea id="message" placeholder="Votre message" required></textarea>
+    
+        <button type="submit">Envoyer</button>
+    </form>
+   
+</section>
+
+<footer>
+    <p>&copy; 2024 Mon Portfolio. Tous droits réservés.</p>
+</footer>
+ 
+<script>
+    function openEmailClient() {
+        var name = document.getElementById('name').value;
+        var email = document.getElementById('email').value;
+        var message = document.getElementById('message').value;
+
+        // Construit le lien mailto avec les informations du formulaire
+        var mailtoLink = "mailto:laurencebarthelemy@gmail.com" +
+            "?subject=" + encodeURIComponent("Message de " + name) +
+            "&body=" + encodeURIComponent("Nom: " + name + "\nEmail: " + email + "\n\nMessage: " + message);
+
+        // Ouvre le client de messagerie avec le lien mailto
+        window.location.href = mailtoLink;
+    }
+</script>
+
+<script>
+    const toggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('nav');
+    
+    toggle.addEventListener('click', () => {
+        nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+    });
+</script>
+
+</body>
+</html>
